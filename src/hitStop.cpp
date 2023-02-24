@@ -59,7 +59,6 @@ inline void SGTM(float a_in) {
 }
 
 typedef void(_fastcall* _shakeCamera)(float strength, RE::NiPoint3 source, float duration);
-static REL::Relocation<_shakeCamera> shakeCamera{ RELOCATION_ID(32275, 33012) };
 
 
 
@@ -87,12 +86,14 @@ void hitStop::update()
 			stopSGTM_ongoing = false;
 			return;
 		}
-		stopSGTM_time -= *Utils::g_deltaTime;
+		static float* g_deltaTime = (float*)RELOCATION_ID(523660, 410199).address();  // 2F6B948
+		stopSGTM_time -= *g_deltaTime;
 	}
 }
 
 void hitStop::calculateStop(bool isPowerAtk, RE::Actor* hitter, RE::TESObjectWEAP* weapon, STOPTYPE stopType)
 {
+	static REL::Relocation<_shakeCamera> shakeCamera{ RELOCATION_ID(32275, 33012) };
 	RE::WEAPON_TYPE wpnType = weapon->GetWeaponType();
 	stop(getStopTime(wpnType, stopType, isPowerAtk), getStopSpeed(wpnType, stopType, isPowerAtk), hitter);
 	//FIXME: fix this quick workaround

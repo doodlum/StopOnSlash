@@ -76,10 +76,10 @@ namespace settings {
 
 	namespace stopTime
 	{
-		float objectStopTime = 0.1;
-		float bashStopTime = 0.1;
-		float blockedStopTime = 0.1;
-		float creatureStopTime = 0.1;
+		float objectStopTime = 0.1f;
+		float bashStopTime = 0.1f;
+		float blockedStopTime = 0.1f;
+		float creatureStopTime = 0.1f;
 
 		float stopTimePowerMult = 1;
 
@@ -94,10 +94,10 @@ namespace settings {
 
 	namespace stopSpeed
 	{
-		float objectStopSpeedPercent = 0.1;
-		float bashStopSpeedPercent = 0.1;
-		float blockedStopSpeedPercent = 0.1;
-		float creatureStopSpeedPercent = 0.1;
+		float objectStopSpeedPercent = 0.1f;
+		float bashStopSpeedPercent = 0.1f;
+		float blockedStopSpeedPercent = 0.1f;
+		float creatureStopSpeedPercent = 0.1f;
 
 		float stopSpeedPowerMult = 1;
 
@@ -112,10 +112,10 @@ namespace settings {
 
 	namespace shakeTime
 	{
-		extern float objectShakeTime = 0.3;
-		extern float bashShakeTime = 0.3;
-		extern float blockedShakeTime = 0.3;
-		extern float creatureShakeTime = 0.3;
+		extern float objectShakeTime = 0.3f;
+		extern float bashShakeTime = 0.3f;
+		extern float blockedShakeTime = 0.3f;
+		extern float creatureShakeTime = 0.3f;
 
 		extern float ShakeTimePowerMult = 1;
 
@@ -130,10 +130,10 @@ namespace settings {
 
 	namespace shakeMagnitude
 	{
-		extern float objectShakeMagnitude = 0.3;
-		extern float bashShakeMagnitude = 0.3;
-		extern float blockedShakeMagnitude = 0.3;
-		extern float creatureShakeMagnitude = 0.3;
+		extern float objectShakeMagnitude = 0.3f;
+		extern float bashShakeMagnitude = 0.3f;
+		extern float blockedShakeMagnitude = 0.3f;
+		extern float creatureShakeMagnitude = 0.3f;
 
 		extern float ShakeMagnitudePowerMult = 1;
 

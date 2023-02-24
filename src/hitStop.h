@@ -1,9 +1,17 @@
 #pragma once
 #include "dataHandler.h"
-namespace Utils
+
+namespace std
 {
-	inline static float* g_deltaTime = (float*)RELOCATION_ID(523660, 410199).address();  // 2F6B948
-	inline static float* g_deltaTimeRealTime = (float*)RELOCATION_ID(523661, 410200).address();  // 2F6B94C
+	template <class T>
+	struct hash<RE::BSPointerHandle<T>>
+	{
+		uint32_t operator()(const RE::BSPointerHandle<T>& a_handle) const
+		{
+			uint32_t nativeHandle = const_cast<RE::BSPointerHandle<T>*>(&a_handle)->native_handle();  // ugh
+			return nativeHandle;
+		}
+	};
 }
 
 class AnimSpeedManager
@@ -28,7 +36,9 @@ private:
 		float speedMult;
 		float dur;
 	};
+
 	static inline std::unordered_map<RE::ActorHandle, AnimSpeedData> _animSpeeds = {};
+
 	static inline std::mutex _animSpeedsLock = std::mutex();
 
 	static void update(RE::ActorHandle a_actorHandle, float& a_deltaTime);
@@ -38,7 +48,6 @@ private:
 	public:
 		static void install()
 		{
-			auto& trampoline = SKSE::GetTrampoline();
 			REL::Relocation<std::uintptr_t> PlayerCharacterVtbl{ RE::VTABLE_PlayerCharacter[0] };
 			_PlayerCharacter_UpdateAnimation = PlayerCharacterVtbl.write_vfunc(0x7D, PlayerCharacter_UpdateAnimation);
 			logger::info("hook:on_updateAnimation_player");
